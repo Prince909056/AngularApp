@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+app-spinner, router-outlet {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
