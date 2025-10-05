@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { ThemeService } from '../../../core/services/theme.service';
-import { ThemeModalComponent } from '../../../shared/components/theme-modal/theme-modal.component';
-import { LoaderService } from '../../../shared/services/loader.service';
+import { ThemeService } from '../../../../core/services/theme.service';
+import { ThemeModalComponent } from '../../../../shared/components/theme-modal/theme-modal.component';
+import { LoaderService } from '../../../../shared/services/loader.service';
 
 @Component({
   selector: 'app-login',
