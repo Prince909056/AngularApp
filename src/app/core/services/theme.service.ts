@@ -98,15 +98,24 @@ export class ThemeService {
     const theme = this.selectedThemeSubject.value;
     const isLightMode = this.isLightModeSubject.value;
     
+    // Add or remove dark-mode class to document body
+    if (isLightMode) {
+      document.body.classList.remove('dark-mode');
+    } else {
+      document.body.classList.add('dark-mode');
+    }
+    
     // Set theme gradient - always use the theme gradient for buttons and interactive elements
     root.style.setProperty('--theme-gradient', theme.gradient);
     
     // Set background gradient separately for the page background
     if (isLightMode) {
       root.style.setProperty('--page-background', theme.gradient);
+      document.body.style.background = theme.gradient;
     } else {
       // For dark mode, use the dark background color for page background
       root.style.setProperty('--page-background', theme.backgroundDark);
+      document.body.style.background = theme.backgroundDark;
     }
     
     // Convert hex to RGB for rgba values

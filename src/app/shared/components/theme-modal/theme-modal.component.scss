@@ -16,7 +16,7 @@
   }
 
   // Dark mode theme modal
-  .dark-mode & {
+  :host-context(.dark-mode) & {
     background: #2d2d44;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
 
@@ -252,7 +252,7 @@
 
         .theme-info {
           text-align: center;
-          
+
           h4 {
             font-size: 0.9rem;
             font-weight: 600;
@@ -358,7 +358,7 @@
   .theme-modal {
     width: 100%;
     border-radius: 0;
-    
+
     .theme-modal-content {
       padding: 1rem;
     }

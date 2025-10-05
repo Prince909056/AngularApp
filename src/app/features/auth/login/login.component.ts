@@ -31,6 +31,9 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
         this.isLightMode = isLight;
       })
     );
+    
+    // Initialize theme immediately
+    this.isLightMode = this.themeService.getIsLightMode();
   }
 
   ngOnDestroy(): void {
