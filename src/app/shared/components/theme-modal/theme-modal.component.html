@@ -1,0 +1,69 @@
+<!-- Theme Customizer Modal -->
+<div class="theme-modal" [class.show]="showModal" (click)="closeModal($event)">
+  <div class="theme-modal-content" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>Theme Customizer</h2>
+      <button class="close-btn" (click)="closeModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dark Mode Section -->
+    <div class="dark-mode-section">
+      <div class="dark-mode-card">
+        <span class="dark-mode-label">Dark Mode</span>
+        <div class="toggle-switch" [class.active]="!isLightMode" (click)="setMode(!isLightMode)">
+          <div class="toggle-handle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Preview Section -->
+    <div class="preview-section">
+      <div class="preview-card">
+        <h3>Live Preview</h3>
+        <div class="color-swatches">
+          <div class="swatch" [style.background-color]="selectedTheme?.primary"></div>
+          <div class="swatch" [style.background-color]="selectedTheme?.accent"></div>
+          <div class="swatch" [style.background-color]="selectedTheme?.backgroundLight"></div>
+          <div class="swatch" [style.background-color]="selectedTheme?.backgroundDark"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Selection Section -->
+    <div class="theme-selection">
+      <h3>Theme Selection</h3>
+      <div class="theme-cards">
+        <div 
+          *ngFor="let theme of themes; let i = index" 
+          class="theme-card" 
+          [class.selected]="selectedTheme?.name === theme.name"
+          (click)="selectTheme(theme)"
+        >
+          <div class="theme-preview" [style.background]="theme.gradient">
+            <div class="theme-icon">
+              <!-- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              </svg> -->
+            </div>
+            <div class="theme-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="theme-info">
+            <h4>{{ theme.name }}</h4>
+            <p>{{ theme.description }}</p>
+          </div>
+          <!-- <div *ngIf="i === 2" class="new-indicator"></div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
