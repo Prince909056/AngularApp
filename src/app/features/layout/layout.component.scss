@@ -1,0 +1,50 @@
+.layout-root {
+	display: flex;
+	min-height: 100vh;
+	background: var(--theme-background, #f6f8fb);
+	font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+.sidebar {
+	width: 220px;
+	background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(59,130,246,0.08));
+	padding: 28px 18px;
+	box-shadow: 2px 0 8px rgba(16, 24, 40, 0.04);
+	display: flex;
+	flex-direction: column;
+}
+.brand {
+	font-weight: 700;
+	color: var(--theme-primary, #1761ff);
+	margin-bottom: 18px;
+}
+.nav { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.nav-item {
+	padding: 10px 12px;
+	border-radius: 8px;
+	color: var(--theme-text, #1f2937);
+	cursor: pointer;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-item.active { background: var(--theme-primary-rgba, #dfeeff); color: var(--theme-primary, #0b4edc); font-weight: 600; }
+.nav-item:hover { background: rgba(11, 78, 220, 0.08); }
+.nav-item .icon { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; color: var(--theme-primary, #0b4edc); }
+.nav-item.logout { margin-top: auto; border: 1px solid rgba(220, 38, 38, 0.2); color: #d9534f; padding: 8px 12px; }
+
+.main { flex: 1; padding: 22px 28px; display: flex; flex-direction: column; }
+.topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.topbar h1 { margin: 0; font-size: 20px; color: var(--theme-text, #0f172a); }
+.top-actions { display: flex; gap: 12px; align-items: center; }
+.btn-theme { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 6px 10px; cursor: pointer; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04); }
+.icon-bell { background: #fff; padding: 8px; border-radius: 10px; box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04); display: inline-flex; color: var(--theme-primary, #0b4edc); }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--theme-gradient, linear-gradient(180deg, #6b8eff, #2f63ff)); display: flex; align-items: center; justify-content: center; color: white; }
+
+.content { flex: 1; display: block; }
+
+.footer { margin-top: 24px; padding-top: 16px; color: #6b7280; font-size: 12px; border-top: 1px solid #e5e7eb; }
+
+

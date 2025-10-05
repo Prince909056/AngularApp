@@ -1,4 +1,4 @@
-<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" *ngIf="isLoading">
+<!-- <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" *ngIf="isLoading">
     <div class="lds-spinner">
         <div></div>
         <div></div>
@@ -13,4 +13,16 @@
         <div></div>
         <div></div>
     </div>
+</div> -->
+
+<!-- spinner.component.html -->
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div class="lds-spinner">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+  </div>
 </div>

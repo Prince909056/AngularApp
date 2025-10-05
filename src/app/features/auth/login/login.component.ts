@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../core/services/theme.service';
 import { ThemeModalComponent } from '../../../shared/components/theme-modal/theme-modal.component';
+import { LoaderService } from '../../../shared/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
     
     // Initialize theme immediately
     this.isLightMode = this.themeService.getIsLightMode();
+    // this.loaderService.hide();
   }
 
   ngOnDestroy(): void {

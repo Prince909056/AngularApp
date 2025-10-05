@@ -20,7 +20,7 @@ export class App implements OnInit, OnDestroy {
    */
   constructor(private loaderService: LoaderService, private cdr: ChangeDetectorRef) {
     // super();
-    this.isLoading = true;
+    // this.isLoading = true;
   }
 
   ngOnInit(): void {

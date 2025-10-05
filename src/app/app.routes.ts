@@ -4,5 +4,6 @@ import { LoginComponent } from './features/auth/login/login.component';
 
 export const routes: Routes = [
 	{ path: '', component: DashboardComponent },
+	{ path: 'dashboard', component: DashboardComponent },
 	{ path: 'login', component: LoginComponent },
 ];
