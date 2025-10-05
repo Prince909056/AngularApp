@@ -16,7 +16,7 @@
   }
 
   // Dark mode theme modal
-  :host-context(.dark-mode) & {
+  :host-context(body.dark-mode) & {
     background: #2d2d44;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
 
