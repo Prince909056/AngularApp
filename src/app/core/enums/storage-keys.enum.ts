@@ -1,3 +1,4 @@
 export enum StorageKeysEnum {
-    AuthData = 'authData'
+    AuthData = 'authData',
+    RememberMeData = 'rememberMeData'
 }

@@ -8,7 +8,7 @@ export const API_ENDPOINTS = {
             FORGOT_PASSWORD: `${environment.server.baseUrl}api/v1/Login/ForgotPasswordAsync`,
             SET_NEW_PASSWORD: `${environment.server.baseUrl}api/v1/Login/ResetPasswordForForgotAsync`,
             RESET_PASSWORD_FOR_FORGOT: `${environment.server.baseUrl}api/v1/Login/ResetPasswordForForgotAsync`,
-            
+            REFRESH_TOKEN: `${environment.server.baseUrl}api/v1/Login/RefreshTokenAsync`
         },
         OAuth: {
             SIGNUP_WITH_GOOGLE: `${environment.server.baseUrl}api/v1/OAuth/SignupGoogleAsync`,
