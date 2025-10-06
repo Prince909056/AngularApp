@@ -2,13 +2,18 @@ import { HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angul
 import { inject } from '@angular/core';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { StorageService } from '../services/storage.service';
+import { AuthService } from '../services/auth.service';
+import { AuthTokenService } from '../services/auth-token.service';
+import { NavigationService } from '../services/navigation.service';
+import { ILoginResponse } from '../models/login/response/login-response.model';
+import { StorageKeysEnum } from '../enums/storage-keys.enum';
 
 export const authInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ) => {
   const storageService = inject(StorageService);
-//   const authService = inject(AuthService);
+  const authService = inject(AuthService);
   const authTokenService = inject(AuthTokenService);
   const navigationService = inject(NavigationService);
 
@@ -18,7 +23,7 @@ export const authInterceptor: HttpInterceptorFn = (
   }
 
   // Add token to request if available
-  const token = storageService.getItem<ILoginResponse>('authData')?.accessToken;
+  const token = storageService.getItem<ILoginResponse>(StorageKeysEnum.AuthData)?.accessToken;
   const authReq = token
     ? req.clone({
         setHeaders: {
