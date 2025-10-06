@@ -1,4 +1,4 @@
-export interface Theme {
+export interface ITheme {
   name: string;
   description: string;
   primary: string;

@@ -26,9 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -36,7 +34,12 @@
             }
           },
           "configurations": {
-            "production": {
+            "base": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            },
+            "prod": {
               "budgets": [
                 {
                   "type": "initial",
@@ -49,27 +52,62 @@
                   "maximumError": "8kB"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "outputHashing": "all"
             },
-            "development": {
+            "qa": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "dev": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "prod"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "port": 4444,
+            "host": "0.0.0.0",
+            "open": true,
+            "ssl": false
+          },
           "configurations": {
-            "production": {
-              "buildTarget": "AngularApp:build:production"
+            "base": {
+              "buildTarget": "AngularApp:build:base"
             },
-            "development": {
-              "buildTarget": "AngularApp:build:development"
+            "prod": {
+              "buildTarget": "AngularApp:build:prod"
+            },
+            "qa": {
+              "buildTarget": "AngularApp:build:qa"
+            },
+            "dev": {
+              "buildTarget": "AngularApp:build:dev"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "base"
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
@@ -85,9 +123,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }

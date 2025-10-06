@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../core/services/theme.service';
-import { Theme } from '../../../core/interfaces/theme.interface';
+import { Theme } from '../../../core/models/theme.model';
 
 @Component({
   selector: 'app-theme-modal',

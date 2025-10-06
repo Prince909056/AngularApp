@@ -1,13 +1,13 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Theme } from '../interfaces/theme.interface';
+import { type ITheme } from '../models/theme.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private themes: Theme[] = [
+  private themes: ITheme[] = [
     {
       name: 'Ocean Blue',
       description: 'Trust & Reliability',
@@ -54,7 +54,7 @@ export class ThemeService {
     }
   ];
 
-  private selectedThemeSubject = new BehaviorSubject<Theme>(this.themes[3]); // Default to Sunset Orange
+  private selectedThemeSubject = new BehaviorSubject<ITheme>(this.themes[3]); // Default to Sunset Orange
   private isLightModeSubject = new BehaviorSubject<boolean>(true);
 
   public selectedTheme$ = this.selectedThemeSubject.asObservable();
@@ -64,11 +64,11 @@ export class ThemeService {
     this.loadThemeFromStorage();
   }
 
-  getThemes(): Theme[] {
+  getThemes(): ITheme[] {
     return this.themes;
   }
 
-  getSelectedTheme(): Theme {
+  getSelectedTheme(): ITheme {
     return this.selectedThemeSubject.value;
   }
 
@@ -76,7 +76,7 @@ export class ThemeService {
     return this.isLightModeSubject.value;
   }
 
-  selectTheme(theme: Theme): void {
+  selectTheme(theme: ITheme): void {
     this.selectedThemeSubject.next(theme);
     this.applyTheme();
     this.saveThemeToStorage();
