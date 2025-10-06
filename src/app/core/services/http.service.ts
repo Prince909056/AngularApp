@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, finalize, Observable, throwError } from 'rxjs';
-import { type IApiResponse } from '../Models/api-response.model';
 import { LoaderService } from '../../shared/services/loader.service';
+import { IApiResponse } from '../models/api-response.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,9 +18,7 @@ export class HttpService {
     const httpParams = new HttpParams({ fromObject: params || {} });
     const request = this.http.get<IApiResponse<T>>(endpoint, { params: httpParams });
     const requestWithLoaderHide =
-      isloaderHide == true
-        ? request.pipe(finalize(() => this.loaderService.hide()))
-        : request;
+      isloaderHide == true ? request.pipe(finalize(() => this.loaderService.hide())) : request;
     return handleError
       ? requestWithLoaderHide.pipe(catchError((err) => throwError(() => err)))
       : requestWithLoaderHide.pipe(finalize(() => this.loaderService.hide()));
@@ -38,9 +36,7 @@ export class HttpService {
     };
     const request = this.http.post<IApiResponse<T>>(endpoint, body, options);
     const requestWithLoaderHide =
-      isloaderHide == true
-        ? request.pipe(finalize(() => this.loaderService.hide()))
-        : request;
+      isloaderHide == true ? request.pipe(finalize(() => this.loaderService.hide())) : request;
     return handleError
       ? requestWithLoaderHide.pipe(catchError((err) => throwError(() => err)))
       : requestWithLoaderHide.pipe(finalize(() => this.loaderService.hide()));
@@ -59,9 +55,7 @@ export class HttpService {
     };
     const request = this.http.delete<IApiResponse<T>>(endpoint, options);
     const requestWithLoaderHide =
-      isloaderHide == true
-        ? request.pipe(finalize(() => this.loaderService.hide()))
-        : request;
+      isloaderHide == true ? request.pipe(finalize(() => this.loaderService.hide())) : request;
     return handleError
       ? requestWithLoaderHide.pipe(catchError((err) => throwError(() => err)))
       : requestWithLoaderHide.pipe(finalize(() => this.loaderService.hide()));
@@ -80,9 +74,7 @@ export class HttpService {
 
     const request = this.http.patch<IApiResponse<T>>(endpoint, body, options);
     const requestWithLoaderHide =
-      isloaderHide == true
-        ? request.pipe(finalize(() => this.loaderService.hide()))
-        : request;
+      isloaderHide == true ? request.pipe(finalize(() => this.loaderService.hide())) : request;
     return handleError
       ? requestWithLoaderHide.pipe(catchError((err) => throwError(() => err)))
       : requestWithLoaderHide.pipe(finalize(() => this.loaderService.hide()));
@@ -101,9 +93,7 @@ export class HttpService {
     };
     const request = this.http.post<T>(endpoint, body, options);
     const requestWithLoaderHide =
-      isloaderHide == true
-        ? request.pipe(finalize(() => this.loaderService.hide()))
-        : request;
+      isloaderHide == true ? request.pipe(finalize(() => this.loaderService.hide())) : request;
     return handleError
       ? requestWithLoaderHide.pipe(catchError((err) => throwError(() => err)))
       : requestWithLoaderHide.pipe(finalize(() => this.loaderService.hide()));
