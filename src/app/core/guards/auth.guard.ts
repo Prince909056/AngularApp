@@ -1,16 +1,12 @@
 import { isPlatformBrowser } from "@angular/common";
 import { inject, PLATFORM_ID } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
-import { AuthTokenService } from "../services/authToken.service";
 import { API_ROUTES } from "../constants/api-routes.constant";
 import { StorageService } from "../services/storage.service";
+import { AuthTokenService } from "../services/auth-token.service";
 import { ToastNotificationService } from "../services/toast-notification.service";
 
 export const authGuard: CanActivateFn = (route, state) => {
-    // Auth guard initialization
-    // Checking authentication status
-    // Processing route access
-
     const platformId = inject(PLATFORM_ID);
     const router = inject(Router);
     const authTokenService = inject(AuthTokenService);
@@ -41,30 +37,30 @@ export const authGuard: CanActivateFn = (route, state) => {
                 return true;
             }
 
-            const practiceId = authToken.practiceId;
-            const roles = authToken.roles;
-            const isPracticeAdmin = roles?.some(role => role.name === 'PracticeAdmin');
-            const isStaff = roles?.some(role => role.name === 'Staff');
-            const isClinician = roles?.some(role => role.name === 'Clinician');
-            const signUpId = storageService.getItem('signUpId');
+            // const practiceId = authToken.practiceId;
+            // const roles = authToken.roles;
+            // const isPracticeAdmin = roles?.some(role => role.name === 'PracticeAdmin');
+            // const isStaff = roles?.some(role => role.name === 'Staff');
+            // const isClinician = roles?.some(role => role.name === 'Clinician');
+            // const signUpId = storageService.getItem('signUpId');
 
-            // If practiceId is 0, allow access (for onboarding users)
-            if (practiceId === 0) {
-                return true;
-            }
+            // // If practiceId is 0, allow access (for onboarding users)
+            // if (practiceId === 0) {
+            //     return true;
+            // }
 
-            // If practiceId > 0, allow access (for users with assigned practice)
-            if (practiceId !== null && practiceId !== undefined && practiceId > 0) {
-                return true;
-            }
+            // // If practiceId > 0, allow access (for users with assigned practice)
+            // if (practiceId !== null && practiceId !== undefined && practiceId > 0) {
+            //     return true;
+            // }
 
-            // If practiceId is null or undefined, check user roles
-            // Staff and Clinician users should be allowed access even without practiceId
-            if (practiceId === null || practiceId === undefined) {
-                if (isStaff || isClinician || isPracticeAdmin) {
-                    return true;
-                }
-            }
+            // // If practiceId is null or undefined, check user roles
+            // // Staff and Clinician users should be allowed access even without practiceId
+            // if (practiceId === null || practiceId === undefined) {
+            //     if (isStaff || isClinician || isPracticeAdmin) {
+            //         return true;
+            //     }
+            // }
 
             // If we reach here, the user doesn't have proper permissions
             // Only redirect to login if not already on login page

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../core/services/theme.service';
-import { Theme } from '../../../core/models/theme.model';
+import { type ITheme } from '../../../core/models/theme.model';
 
 @Component({
   selector: 'app-theme-modal',
@@ -13,8 +13,8 @@ import { Theme } from '../../../core/models/theme.model';
 })
 export class ThemeModalComponent implements OnInit, OnDestroy {
   showModal = false;
-  themes: Theme[] = [];
-  selectedTheme: Theme | null = null;
+  themes: ITheme[] = [];
+  selectedTheme: ITheme | null = null;
   isLightMode = true;
 
   private subscriptions: Subscription = new Subscription();
@@ -56,7 +56,7 @@ export class ThemeModalComponent implements OnInit, OnDestroy {
     this.showModal = false;
   }
 
-  selectTheme(theme: Theme): void {
+  selectTheme(theme: ITheme): void {
     this.themeService.selectTheme(theme);
   }
 
